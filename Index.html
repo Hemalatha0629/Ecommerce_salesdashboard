@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce Sales Analytics — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0e0e0d;
+  --ink2:#4a4945;
+  --ink3:#888780;
+  --bg:#f5f4ef;
+  --card:#fff;
+  --rule:#e1e0d9;
+  --accent:#1d6fa4;
+  --accent2:#eb6834;
+  --green:#1baf7a;
+  --amber:#eda100;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;line-height:1.7;min-height:100vh}
+
+/* ── HEADER ── */
+.site-header{
+  border-bottom:1px solid var(--rule);
+  padding:0 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;position:sticky;top:0;background:var(--bg);z-index:100;
+}
+.logo{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--ink2)}
+.nav{display:flex;gap:2rem;list-style:none}
+.nav a{font-size:13px;color:var(--ink2);text-decoration:none;transition:color .2s}
+.nav a:hover{color:var(--ink)}
+
+/* ── HERO ── */
+.hero{
+  padding:7rem 2.5rem 5rem;
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;
+}
+.hero-label{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;
+  color:var(--ink3);text-transform:uppercase;margin-bottom:1.5rem;
+}
+.hero-title{
+  font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);
+  line-height:1.1;color:var(--ink);font-weight:400;
+}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-desc{
+  font-size:16px;color:var(--ink2);line-height:1.8;margin-top:1.5rem;max-width:42ch;
+}
+.tech-stack{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:2rem;
+}
+.tag{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;
+  padding:5px 12px;border:1px solid var(--rule);border-radius:3px;
+  color:var(--ink2);background:transparent;
+}
+.hero-kpis{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2rem;
+  padding:2.5rem;border:1px solid var(--rule);border-radius:4px;
+  background:var(--card);
+}
+.kpi-item{}
+.kpi-num{
+  font-family:'DM Serif Display',serif;font-size:2.4rem;
+  line-height:1;color:var(--ink);letter-spacing:-.02em;
+}
+.kpi-label{
+  font-size:12px;color:var(--ink3);margin-top:4px;letter-spacing:.03em;
+}
+.kpi-item.accent .kpi-num{color:var(--accent)}
+.kpi-item.orange .kpi-num{color:var(--accent2)}
+.kpi-item.green .kpi-num{color:var(--green)}
+
+/* ── SECTIONS ── */
+.section{
+  max-width:1100px;margin:0 auto;padding:4rem 2.5rem;
+  border-top:1px solid var(--rule);
+}
+.section-eyebrow{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;
+  color:var(--ink3);text-transform:uppercase;margin-bottom:.75rem;
+}
+.section-title{
+  font-family:'DM Serif Display',serif;font-size:1.8rem;font-weight:400;
+  margin-bottom:.5rem;
+}
+.section-sub{font-size:15px;color:var(--ink2);max-width:65ch;}
+
+/* ── CHARTS ── */
+.chart-grid{
+  display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;margin-top:2.5rem;
+}
+.chart-grid-3{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:2.5rem;
+}
+.chart-card{
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;
+  padding:1.5rem;
+}
+.chart-card-title{
+  font-size:13px;font-weight:500;color:var(--ink);margin-bottom:.25rem;
+}
+.chart-card-sub{font-size:12px;color:var(--ink3);margin-bottom:1.25rem;}
+.chart-wrap{position:relative;width:100%}
+
+/* ── PROCESS ── */
+.process-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2.5rem;
+}
+.process-step{
+  padding:1.25rem;border:1px solid var(--rule);border-radius:4px;
+  background:var(--card);
+}
+.step-num{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+  color:var(--ink3);margin-bottom:.75rem;
+}
+.step-title{font-size:14px;font-weight:500;margin-bottom:.35rem;}
+.step-desc{font-size:12px;color:var(--ink2);line-height:1.6;}
+.step-tag{
+  display:inline-block;margin-top:.75rem;font-family:'DM Mono',monospace;
+  font-size:10px;padding:3px 8px;background:var(--bg);
+  border:1px solid var(--rule);border-radius:2px;color:var(--ink3);
+}
+
+/* ── INSIGHTS ── */
+.insights-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;
+}
+.insight-card{
+  padding:1.5rem;border:1px solid var(--rule);border-radius:4px;
+  background:var(--card);
+}
+.insight-num{
+  font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--accent);
+  line-height:1;
+}
+.insight-label{font-size:13px;font-weight:500;margin:.35rem 0 .5rem;}
+.insight-desc{font-size:13px;color:var(--ink2);line-height:1.6;}
+.insight-card.warm .insight-num{color:var(--accent2)}
+.insight-card.green .insight-num{color:var(--green)}
+.insight-card.amber .insight-num{color:var(--amber)}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--rule);
+  padding:2rem 2.5rem;
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+footer .copy{font-size:13px;color:var(--ink3);}
+footer .links{display:flex;gap:1.5rem;}
+footer .links a{font-size:13px;color:var(--ink2);text-decoration:none;}
+
+/* ── FORECAST BAR ── */
+.forecast-label{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;
+  color:var(--accent);border:1px solid var(--accent);border-radius:2px;
+  padding:2px 7px;display:inline-block;margin-bottom:1.25rem;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">ecommerce-analytics.ipynb</span>
+  <nav><ul class="nav">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#analysis">Analysis</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#insights">Findings</a></li>
+  </ul></nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="overview">
+  <div>
+    <p class="hero-label">Data Analytics Project</p>
+    <h1 class="hero-title">E-Commerce<br><em>Sales Analytics</em></h1>
+    <p class="hero-desc">End-to-end analysis of 1.07 million transactions from a UK-based online gift retailer spanning Dec 2009 – Dec 2011. SQL data cleaning, Python EDA, K-Means customer segmentation, time-series forecasting, and Power BI reporting.</p>
+    <div class="tech-stack">
+      <span class="tag">Python</span>
+      <span class="tag">SQL / SQLite</span>
+      <span class="tag">pandas</span>
+      <span class="tag">scikit-learn</span>
+      <span class="tag">K-Means</span>
+      <span class="tag">RFM Analysis</span>
+      <span class="tag">Power BI</span>
+    </div>
+  </div>
+  <div class="hero-kpis">
+    <div class="kpi-item accent">
+      <div class="kpi-num">£17.7M</div>
+      <div class="kpi-label">Total revenue</div>
+    </div>
+    <div class="kpi-item">
+      <div class="kpi-num">36,969</div>
+      <div class="kpi-label">Total orders</div>
+    </div>
+    <div class="kpi-item orange">
+      <div class="kpi-num">£479</div>
+      <div class="kpi-label">Avg order value</div>
+    </div>
+    <div class="kpi-item green">
+      <div class="kpi-num">72%</div>
+      <div class="kpi-label">Returning customers</div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYSIS -->
+<section class="section" id="analysis">
+  <p class="section-eyebrow">Exploratory Analysis</p>
+  <h2 class="section-title">Revenue trends &amp; product performance</h2>
+  <p class="section-sub">Monthly revenue shows strong Q4 seasonality in both years. UK dominates at 83% of revenue, with emerging markets in continental Europe.</p>
+
+  <div class="chart-grid">
+    <!-- Monthly Revenue Chart -->
+    <div class="chart-card">
+      <div class="chart-card-title">Monthly revenue &amp; orders</div>
+      <div class="chart-card-sub">Dec 2009 – Dec 2011, with 2012 forecast</div>
+      <div class="forecast-label">2012 Q1 forecast included</div>
+      <div class="chart-wrap" style="height:280px">
+        <canvas id="monthlyChart" role="img" aria-label="Monthly revenue bar chart showing seasonal peaks in Q4 2010 and Q4 2011">Monthly revenue from Dec 2009 to Dec 2011 with Q4 seasonal spikes.</canvas>
+      </div>
+    </div>
+    <!-- Country Chart -->
+    <div class="chart-card">
+      <div class="chart-card-title">Revenue by country</div>
+      <div class="chart-card-sub">Top 10 markets</div>
+      <div class="chart-wrap" style="height:280px">
+        <canvas id="countryChart" role="img" aria-label="Horizontal bar chart showing UK as dominant market at £14.7M followed by Ireland and Netherlands">Revenue by country: UK leads significantly.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-grid-3" style="margin-top:1.5rem">
+    <!-- Top Products -->
+    <div class="chart-card" style="grid-column:span 2">
+      <div class="chart-card-title">Top products by revenue</div>
+      <div class="chart-card-sub">Revenue vs units sold — bubble size = units sold</div>
+      <div class="chart-wrap" style="height:220px">
+        <canvas id="productChart" role="img" aria-label="Horizontal bar chart of top 8 products by revenue, led by Regency Cakestand 3 Tier at £286K">Top 8 products by total revenue.</canvas>
+      </div>
+    </div>
+    <!-- Customer Retention -->
+    <div class="chart-card">
+      <div class="chart-card-title">Customer retention</div>
+      <div class="chart-card-sub">5,878 unique customers</div>
+      <div class="chart-wrap" style="height:160px">
+        <canvas id="retentionChart" role="img" aria-label="Donut chart showing 72% returning customers vs 28% new">72% of customers are returning buyers.</canvas>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:#4a4945">
+        <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#1d6fa4;display:inline-block"></span>Returning 72%</span>
+        <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#e1e0d9;display:inline-block"></span>New 28%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <p class="section-eyebrow">Methodology</p>
+  <h2 class="section-title">End-to-end analytical pipeline</h2>
+  <p class="section-sub">From raw transaction data to actionable segment strategy — every stage documented and reproducible.</p>
+
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Data ingestion</div>
+      <div class="step-desc">Loaded 1.07M rows from Online Retail II dataset. Profiled missing values and data types.</div>
+      <span class="step-tag">pandas</span>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">SQL cleaning</div>
+      <div class="step-desc">Removed cancellations, nulls, and zero-price rows via in-memory SQLite. Engineered Sales column.</div>
+      <span class="step-tag">SQLite</span>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">EDA &amp; KPIs</div>
+      <div class="step-desc">Monthly trends, country splits, product rankings, and basket-size distributions.</div>
+      <span class="step-tag">seaborn</span>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">RFM &amp; K-Means</div>
+      <div class="step-desc">Scored customers on Recency, Frequency, Monetary. Clustered into 4 segments using K-Means.</div>
+      <span class="step-tag">scikit-learn</span>
+    </div>
+    <div class="process-step">
+      <div class="step-num">05</div>
+      <div class="step-title">Forecasting &amp; BI</div>
+      <div class="step-desc">Time-series regression for 2012 Q1 forecast. Exported clean tables to Power BI dashboard.</div>
+      <span class="step-tag">Power BI</span>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="section" id="insights">
+  <p class="section-eyebrow">Key findings</p>
+  <h2 class="section-title">What the data revealed</h2>
+  <p class="section-sub">Four concrete takeaways with direct strategy implications.</p>
+
+  <div class="insights-grid">
+    <div class="insight-card">
+      <div class="insight-num">2×</div>
+      <div class="insight-label">Q4 revenue spike (Oct–Nov)</div>
+      <div class="insight-desc">October and November consistently double the monthly average — driven by holiday gift purchasing. Supply chain and inventory planning should anchor to this window.</div>
+    </div>
+    <div class="insight-card warm">
+      <div class="insight-num">83%</div>
+      <div class="insight-label">Revenue concentrated in the UK</div>
+      <div class="insight-desc">Despite 10 active markets, the UK accounts for £14.7M of £17.7M total. Germany and Netherlands represent the clearest near-term international growth targets with strong order counts.</div>
+    </div>
+    <div class="insight-card green">
+      <div class="insight-num">72%</div>
+      <div class="insight-label">High customer retention rate</div>
+      <div class="insight-desc">4,255 of 5,878 customers returned — a healthy signal for product-market fit. RFM segmentation identified a "champion" cluster worth prioritising for loyalty programmes.</div>
+    </div>
+    <div class="insight-card amber">
+      <div class="insight-num">£528K</div>
+      <div class="insight-label">Jan 2012 forecast (regression model)</div>
+      <div class="insight-desc">Time-series model projects £528K for Jan 2012 — consistent with Jan 2010 and 2011 post-holiday dips. Forecast horizon extends through Q1 2012 with seasonal adjustment.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="copy">E-Commerce Sales Analytics — Python · SQL · Power BI</span>
+  <div class="links">
+    <a href="#">View notebook</a>
+    <a href="#">Power BI report</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const BLUE='#2a78d6',ORANGE='#eb6834',GREEN='#1baf7a',GRAY='#c3c2b7',FORECAST='rgba(42,120,214,0.35)';
+
+// Monthly Revenue
+const months=['Dec 09','Jan 10','Feb 10','Mar 10','Apr 10','May 10','Jun 10','Jul 10','Aug 10','Sep 10','Oct 10','Nov 10','Dec 10','Jan 11','Feb 11','Mar 11','Apr 11','May 11','Jun 11','Jul 11','Aug 11','Sep 11','Oct 11','Nov 11','Dec 11','Jan 12','Feb 12','Mar 12'];
+const revenue=[686654,557319,506371,699609,594609,599986,639067,591637,604243,831615,1036680,1172336,884592,569445,447137,595501,469200,678595,661214,600091,645344,952838,1039319,1161817,518211,528396,441769,612569];
+const isForecast=[...Array(25).fill(false),...Array(3).fill(true)];
+
+new Chart(document.getElementById('monthlyChart'),{
+  type:'bar',
+  data:{
+    labels:months,
+    datasets:[{
+      label:'Revenue (£)',
+      data:revenue,
+      backgroundColor:revenue.map((_,i)=>isForecast[i]?FORECAST:BLUE),
+      borderWidth:0,borderRadius:3,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'£'+Math.round(c.raw).toLocaleString()}}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:10},color:'#888780',maxRotation:55,autoSkip:false}},
+      y:{grid:{color:'#e1e0d9'},ticks:{callback:v=>'£'+Math.round(v/1000)+'K',font:{size:10},color:'#888780'}}
+    }
+  }
+});
+
+// Country Chart
+const countries=['United Kingdom','Ireland','Netherlands','Germany','France','Australia','Spain','Switzerland','Sweden','Denmark'];
+const countryRev=[14723148,621631,554232,431262,355257,169968,109179,100365,91550,69862];
+new Chart(document.getElementById('countryChart'),{
+  type:'bar',
+  data:{
+    labels:countries,
+    datasets:[{label:'Revenue (£)',data:countryRev,backgroundColor:[BLUE,...Array(9).fill(GRAY)],borderWidth:0,borderRadius:3}]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'£'+Math.round(c.raw).toLocaleString()}}},
+    scales:{
+      x:{grid:{color:'#e1e0d9'},ticks:{callback:v=>'£'+Math.round(v/1000)+'K',font:{size:10},color:'#888780'}},
+      y:{grid:{display:false},ticks:{font:{size:10},color:'#4a4945'}}
+    }
+  }
+});
+
+// Top Products
+const products=['Regency Cakestand','White Heart T-Light','Paper Craft Birdie','Manual','Jumbo Bag Retrospot','Bird Ornament','Postage','Party Bunting'];
+const prodRev=[286486,252072,168470,152341,136980,127074,126563,103880];
+new Chart(document.getElementById('productChart'),{
+  type:'bar',
+  data:{
+    labels:products,
+    datasets:[{label:'Revenue (£)',data:prodRev,backgroundColor:BLUE,borderWidth:0,borderRadius:3}]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'£'+Math.round(c.raw).toLocaleString()}}},
+    scales:{
+      x:{grid:{color:'#e1e0d9'},ticks:{callback:v=>'£'+Math.round(v/1000)+'K',font:{size:10},color:'#888780'}},
+      y:{grid:{display:false},ticks:{font:{size:10},color:'#4a4945'}}
+    }
+  }
+});
+
+// Retention Donut
+new Chart(document.getElementById('retentionChart'),{
+  type:'doughnut',
+  data:{
+    labels:['Returning','New'],
+    datasets:[{data:[72,28],backgroundColor:[BLUE,'#e1e0d9'],borderWidth:0,hoverOffset:4}]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,cutout:'72%',
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+c.raw+'%'}}}
+  }
+});
+</script>
+</body>
+</html>
